@@ -84,6 +84,9 @@ find_by_selector("a:nth-of-type(2)")
 # finding all span tags is the only child
 find_by_selector("span:only-child")
 
+# finding all tr where not the first child (not getting the title row)
+find_by_selector("table > tr:not(:first-child)")
+
 # finding specific tag using combination
 find_by_selector("div.column:nth-of-type(1) > table > tr:nth-child(4) > td:nth-child(2)")
 
