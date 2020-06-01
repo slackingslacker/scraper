@@ -1,28 +1,19 @@
 from selenium import webdriver
-import sys
-import logging
+from datetime import datetime
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+driver = webdriver.Firefox(executable_path="geckodriver.exe")
+driver.implicitly_wait(5)
+driver.get("https://slackingslacker.github.io/seleniumindex")
 
-handler = logging.StreamHandler(sys.stdout)
-handler.setFormatter(logging.Formatter('%(asctime)s - [%(levelname)s] - %(message)s'))
-logger.addHandler(handler)
+def find_the_element(selector: str):
+    try:
+        print("[{}] Finding element {}".format(str(datetime.now()), selector))
+        driver.find_element_by_css_selector(selector)
+        print("[{}] Element found".format(str(datetime.now())))
+    except Exception as e:
+        print("[{}] Error is {}".format(str(datetime.now()), str(e)))
 
-driver = None
-try:
-    driver = webdriver.Firefox(executable_path="geckodriver.exe")
-    driver.implicitly_wait(5)
-    logger.info("Going to website")
-    driver.get("https://slackingslacker.github.io/simple.html")
-    logger.info("Finding #noneExistentId element")
-    driver.find_element_by_css_selector("#noneExistentId")
-except Exception as e:
-    logger.error(str(e))
-
-try:
-    logger.info("finding another element")
-    driver.find_element_by_css_selector("#anotherNoneExistentId")
-except Exception as e:
-    logger.error(str(e))
-    driver.close()
+find_the_element("nav[role='navigation']")
+find_the_element("#noneExistentId")
+find_the_element("#anotherNoneExistentId")
+driver.close()
