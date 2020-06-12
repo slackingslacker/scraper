@@ -6,12 +6,14 @@ from selenium.common.exceptions import TimeoutException
 from datetime import datetime
 
 driver = webdriver.Firefox(executable_path="geckodriver.exe")
-driver.get("https://slackingslacker.github.io/seleniumindex#/divtags")
+driver.get("https://slackingslacker.github.io/seleniumindex#/seleniumwait")
 
 def wait_for_the_element(wait_time: int, selector: str):
     try:
         print("[{}] Finding element {}".format(str(datetime.now()), selector))
-        WebDriverWait(driver, wait_time).until(EC.visibility_of_element_located((By.CSS_SELECTOR, selector)))
+        WebDriverWait(driver, wait_time).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, selector))
+        )
         print("[{}] Element found".format(str(datetime.now())))
     except TimeoutException as e:
         print("[{}] Element did not load".format(str(datetime.now())))

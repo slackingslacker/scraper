@@ -6,7 +6,7 @@ from selenium.common.exceptions import TimeoutException
 from datetime import datetime
 
 driver = webdriver.Firefox(executable_path="geckodriver.exe")
-driver.get("https://slackingslacker.github.io/seleniumindex#/divtags")
+driver.get("https://slackingslacker.github.io/seleniumindex#/seleniumwait")
 
 def wait_for_text(wait_time: int, selector: str, text_value: str):
     try:
