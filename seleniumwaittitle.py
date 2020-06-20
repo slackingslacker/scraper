@@ -17,5 +17,5 @@ def wait_for_the_title(wait_time: int, doc_title: str):
 
 wait_for_the_title(3, "Do It Simpler - VUE - Bulma For Scraping")
 wait_for_the_title(6, "Not the title")
-wait_for_the_title(9, "Another wrong title")
+wait_for_the_title(9, "do it simpler - vue - bulma for scraping")
 driver.close()
